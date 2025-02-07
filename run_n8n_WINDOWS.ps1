@@ -1,15 +1,15 @@
-# Check if Chocolatey is installed
-if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
-  Write-Host "Chocolatey is not installed. Installing..."
-  iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-  Write-Host "Please close and reopen your PowerShell session to complete the Chocolatey installation."
-  exit
-}
-
 # Check if Docker Desktop is installed
 if (-not (Get-Package -Name "docker-desktop" -ErrorAction SilentlyContinue)) {
   Write-Host "Docker Desktop is not installed. Installing with Chocolatey..."
   choco install docker-desktop -y
+} else {
+  # Check if Chocolatey is installed
+  if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
+    Write-Host "Chocolatey is not installed. Installing..."
+    iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    Write-Host "Please close and reopen your PowerShell session to complete the Chocolatey installation."
+    exit
+  }
 }
 
 # Check if Docker is running
