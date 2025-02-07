@@ -17,7 +17,7 @@ if docker info > /dev/null 2>&1; then
     --name n8n \
     -p 5678:5678 \
     -v n8n_data:/home/node/.n8n \
-    docker.n8n.io/n8nio/n8n
+    n8nio/n8n
 
 else
   echo "Docker is not running. Please start Docker and try again."
