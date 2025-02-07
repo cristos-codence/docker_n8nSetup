@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# Check if Docker is installed
+if ! command -v docker &> /dev/null; then
+  echo "Docker is not installed. Installing with Homebrew..."
+  if ! command -v brew &> /dev/null; then
+    echo "Homebrew is not installed. Please install Homebrew first."
+    exit 1
+  fi
+  brew install docker
+  brew install --cask docker # Install Docker Desktop as well
+fi
+
 # Check if Docker is running
 if docker info > /dev/null 2>&1; then
   echo "Docker is running."
