@@ -24,11 +24,15 @@ if docker info > /dev/null 2>&1; then
   fi
 
   # Run n8n using the n8n_data volume for persistence
+  docker pull n8nio/n8n:latest
   docker run -it --rm \
     --name n8n \
     -p 5678:5678 \
     -v n8n_data:/home/node/.n8n \
-    n8nio/n8n
+    -e NODEJS_PREFER_IPV4=true \
+    -e DEBUG=* \
+    n8nio/n8n \
+    start --tunnel
 
 else
   echo "Docker is not running. Please start Docker and try again."
