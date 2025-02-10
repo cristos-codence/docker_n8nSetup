@@ -10,7 +10,7 @@ services:
       - NODE_ENV=production
       - NODEJS_PREFER_IPV4=true
     volumes:
-      - n8n_/home/node/.n8n
+      - n8n_data:/home/node/.n8n
 
 volumes:
-  n8n_
+  n8n_data: 
