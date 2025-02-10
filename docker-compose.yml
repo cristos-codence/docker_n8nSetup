@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - NODE_ENV=production
+      - NODEJS_PREFER_IPV4=true
+    volumes:
+      - n8n_/home/node/.n8n
+
+volumes:
+  n8n_
