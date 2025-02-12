@@ -32,9 +32,13 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 To test your n8n webhook:
 
 1.  Ensure n8n is running.
-2.  Open your terminal.
-3.  Navigate to the directory containing `test_webhook.sh`.
-4.  Run the script: `bash test_webhook.sh`
+2.  Create a new workflow with a `Webhook` trigger.
+3.  Copy the webhook value from that node to your clipboard.
+4.  Open `test_webhook.sh` in a text editor and update the URL with the one on your clipboard.
+5.  Open your terminal.
+6.  Navigate to the directory containing `test_webhook.sh`.
+7.  Make the script executable with `chmod +x test_webhook.sh`
+8.  Run the script with `./test_webhook.sh`
 
 This will send a sample POST request to the specified webhook URL.
 
