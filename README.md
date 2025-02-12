@@ -16,6 +16,11 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
    * Install from: https://www.docker.com/products/docker-desktop/
    * You do not need to sign up for an account (though a personal account is free). You can just download the installer if you scroll below the fold.
 
+### Installation
+
+*  Download the files from https://github.com/cristos-codence/docker_n8nSetup/archive/refs/heads/development.zip
+*  Unzip into a folder on your computer.
+
 ### Running n8n
 
 1.  **macOS**:
