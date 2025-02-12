@@ -19,7 +19,8 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 1.  **macOS**:
     *   Open your terminal.
     *   Navigate to the directory containing `run_n8n_MAC.sh`.
-    *   Run the script: `bash run_n8n_MAC.sh`
+    *   Run `chmod +x run_n8n_MAC.sh` in the terminal
+    *   Run the script with `./run_n8n_MAC.sh`
 
 2.  **Windows**:
     *   Open PowerShell.
