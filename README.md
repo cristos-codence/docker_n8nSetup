@@ -2,6 +2,12 @@
 
 This repository contains scripts to quickly set up and run n8n, the workflow automation tool, using Docker.
 
+*  useful hands-on tutorial: https://docs.n8n.io/try-it-out/longer-introduction/#step-four-add-the-nasa-node-and-set-up-credentials
+*  (different) video tutorial: https://www.youtube.com/watch?v=1MwSoB0gnM4
+
+![image](https://github.com/user-attachments/assets/658f2811-c5fd-4cdb-af09-5d50f349fc10)
+
+
 ## Contents
 
 *   `run_n8n_MAC.sh`: A shell script for macOS to run n8n in Docker.
