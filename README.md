@@ -13,6 +13,8 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 ### Prerequisites
 
 *   Docker installed on your system.
+   * Install from: https://www.docker.com/products/docker-desktop/
+   * You do not need to sign up for an account (though a personal account is free). You can just download the installer if you scroll below the fold.
 
 ### Running n8n
 
