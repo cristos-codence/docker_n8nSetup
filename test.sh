@@ -10,12 +10,33 @@ run_test() {
   
   # Check for error messages in the output
   if [[ $output == *"error"* ]] || [[ $output == *"Error"* ]]; then
-    echo "$script_name: FAILED"
+    echo "$script_name: FAILED (Script Error)"
     return 1
-  else
-    echo "$script_name: PASSED"
-    return 0  # Indicate success
   fi
+
+  # Check if n8n container is running
+  if ! docker ps | grep -q "n8n"; then
+    echo "$script_name: FAILED (Container not running)"
+    return 1
+  fi
+
+  # Test if the container can write to its internal volume
+  docker exec n8n touch /home/node/.n8n/testfile.txt
+  if [ $? -ne 0 ]; then
+    echo "$script_name: FAILED (Write test failed)"
+    return 1
+  fi
+
+  # Test if the container can read from its internal volume
+  docker exec n8n cat /home/node/.n8n/testfile.txt &> /dev/null
+    if [ $? -ne 0 ]; then
+    echo "$script_name: FAILED (Read test failed)"
+    return 1
+  fi
+
+  echo "$script_name: PASSED"
+  return 0  # Indicate success
+
 } #fixme
 # Function to cleanup after a script
 cleanup() {
@@ -24,6 +45,10 @@ cleanup() {
   # Stop and remove any n8n containers
   docker stop n8n &> /dev/null || true
   docker rm n8n &> /dev/null || true
+
+  # Remove the test file from inside the container
+  docker exec n8n rm -f /home/node/.n8n/testfile.txt &> /dev/null || true
+
   echo "Cleanup complete."
 
 }
@@ -39,6 +64,7 @@ cleanup
 run_test "pwsh ./run_n8n_WIN.ps1"
 cleanup
 run_test "pwsh ./run_compose_WIN.ps1"
+cleanup
 
 # Check exit status
 if [ $? -eq 0 ]; then
