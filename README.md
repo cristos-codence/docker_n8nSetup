@@ -63,5 +63,5 @@ This method is provided for convenience, but Docker Compose is recommended for m
 ## Notes
 
 *   The scripts assume that Docker is already installed and configured on your system.
-*   The scripts use a persistent volume named `n8n_data` to store n8n data.
+*   The scripts use a local directory `./n8n-data` to store n8n data.
 *   The n8n instance will be accessible at `http://localhost:5678` *unless* you are using Traefik, in which case it will be accessible through your Traefik configuration.
