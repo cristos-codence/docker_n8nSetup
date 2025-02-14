@@ -31,7 +31,23 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 ### Running n8n
 
-#### Option 1: Using Shell/PowerShell Scripts
+#### Recommended: Option 1: Using Docker Compose
+
+This method is the preferred way to run n8n, as it provides a more robust and configurable deployment.
+
+1.  Download the `docker-compose.zip` file from the [Releases page](https://github.com/cristos-codence/docker_n8nSetup/releases).
+2.  Unzip the `docker-compose.zip` file into a folder on your computer.
+3.  **macOS**:
+    *   Open your terminal.
+    *   Navigate to the directory containing `run_compose.sh`.
+    *   Make the script executable: `chmod +x run_compose.sh`
+    *   Run the script: `./run_compose.sh`
+
+    **Note:** If you are using Traefik, the `run_compose.sh` script will automatically detect it and remove the port mapping from the n8n service.
+
+#### Option 2: Using Shell/PowerShell Scripts
+
+This method is provided for convenience, but Docker Compose is recommended for most users.
 
 1.  **macOS**:
     *   Open your terminal.
@@ -43,18 +59,6 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
     *   Open PowerShell.
     *   Navigate to the directory containing `run_n8n_WINDOWS.ps1`.
     *   Run the script: `.\run_n8n_WINDOWS.ps1`
-
-#### Option 2: Using Docker Compose
-
-1.  Download the `docker-compose.zip` file from the [Releases page](https://github.com/cristos-codence/docker_n8nSetup/releases).
-2.  Unzip the `docker-compose.zip` file into a folder on your computer.
-3.  **macOS**:
-    *   Open your terminal.
-    *   Navigate to the directory containing `run_compose.sh`.
-    *   Make the script executable: `chmod +x run_compose.sh`
-    *   Run the script: `./run_compose.sh`
-
-    **Note:** If you are using Traefik, the `run_compose.sh` script will automatically detect it and remove the port mapping from the n8n service.
 
 ## Notes
 
