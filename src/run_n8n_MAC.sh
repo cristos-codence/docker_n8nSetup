@@ -16,7 +16,7 @@ fi
 docker pull n8nio/n8n:latest #fixme
 docker run -d \
   --name n8n \
-  -p 5678:5678 \
+  -p 5678:80 \
   -v "$N8N_DATA_DIR:/home/node/.n8n" \
   -e NODEJS_PREFER_IPV4=true \
   n8nio/n8n \
