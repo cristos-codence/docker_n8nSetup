@@ -18,6 +18,8 @@ run_test() {
   if ! docker ps | grep -q "n8n"; then
     echo "$script_name: FAILED (Container not running)"
     return 1
+  else
+    echo "$script_name: Container running check PASSED"
   fi
 
   # Test if the container can write to its internal volume
