@@ -16,3 +16,6 @@ docker run -d `
     -e NODEJS_PREFER_IPV4=true `
     n8nio/n8n `
     start --tunnel
+
+Start-Sleep -Seconds 5
+docker logs n8n --tail 20
