@@ -11,22 +11,27 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 1.  Install Docker Desktop:
 
-    <a href="https://www.docker.com/products/docker-desktop/" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
+    <a href="https://www.docker.com/products/docker-desktop/" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
         Download Docker Desktop
-    </a>
+    </a><br/>
 
 2.  Download the latest release ZIP file:
 
-    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/latest/docker-compose.zip" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border-radius: 5px;">
-        Download n8n Setup Files
+    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/latest/docker-compose.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border-radius: 5px;">
+        Download Docker Compose Files for n8n
     </a>
 
 3.  Unzip the downloaded file into a folder on your computer.
 
+4.  Run the setup script for your operating system.
+
 ## Contents
 
+### run_n8n_files.zip
 *   `run_n8n_MAC.sh`: A shell script for macOS to run n8n in Docker.
 *   `run_n8n_WINDOWS.ps1`: A PowerShell script for Windows to run n8n in Docker.
+
+### docker-compose.zip
 *   `run_compose.sh`: A shell script to run n8n using Docker Compose.
 *   `docker-compose.yml`: A Docker Compose file for running n8n.
 *   `docker-compose.override.yml`: A Docker Compose file that overrides the port mapping when Traefik is used.
