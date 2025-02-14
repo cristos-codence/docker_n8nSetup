@@ -14,7 +14,8 @@ run_test() {
 
 # Run the scripts
 run_test "./src/run_n8n_MAC.sh"
-run_test "./src/run_compose.sh"
+run_test "./src/run_compose_MAC.sh"
+run_test "./src/run_compose_WIN.ps1"
 
 # Check exit status
 if [ $? -eq 0 ]; then
