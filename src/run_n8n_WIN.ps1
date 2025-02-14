@@ -9,7 +9,7 @@ Write-Host "Pulling the latest n8nio/n8n image..."
 docker pull n8nio/n8n:latest
 
 Write-Host "Starting n8n..."
-docker run -it --rm `
+docker run -d `
     --name n8n `
     -p 5678:5678 `
     -v "$(pwd)/n8n_/home/node/.n8n" `

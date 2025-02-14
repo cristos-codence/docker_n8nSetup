@@ -20,10 +20,12 @@ run_test() {
 # Function to cleanup after a script
 cleanup() {
   echo "Cleaning up..."
+  
   # Stop and remove any n8n containers
   docker stop n8n &> /dev/null || true
   docker rm n8n &> /dev/null || true
   echo "Cleanup complete."
+
 }
 
 # Change to the directory where the scripts are located
