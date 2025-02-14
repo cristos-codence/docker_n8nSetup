@@ -8,15 +8,15 @@ run_test() {
   echo "Running $script_name..."
   echo "$output"
   
-  # Check for error messages in the output #fixme
+  # Check for error messages in the output
   if [[ $output == *"error"* ]] || [[ $output == *"Error"* ]]; then
     echo "$script_name: FAILED"
     return 1
   else
     echo "$script_name: PASSED"
-    return 1  # Indicate failure
+    return 0  # Indicate success
   fi
-}
+} #fixme
 # Function to cleanup after a script
 cleanup() {
   echo "Cleaning up..."
