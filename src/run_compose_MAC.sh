@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $(dirname "$0") || exit 1 # Change directory to the script's directory
+
 # Check if the traefik_net network exists
 if docker network inspect traefik_net > /dev/null 2>&1; then
   echo "traefik_net network exists."
@@ -22,3 +24,5 @@ else
   docker compose pull
   docker compose -p n8n up -d
 fi
+
+docker logs n8n --tail 20
