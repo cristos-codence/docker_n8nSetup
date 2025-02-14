@@ -56,14 +56,22 @@ This method is the preferred way to run n8n, as it provides a more robust and co
 2.  Unzip the `docker-compose.zip` file into a folder on your computer.
 3.  **macOS**:
     *   Open your terminal.
+        *   You can find the Terminal application in `/Applications/Utilities/Terminal.app`.
+        *   Alternatively, you can use Spotlight search (Command + Space) and type "terminal".
     *   Navigate to the directory containing `run_compose.sh`.
-    *   Make the script executable: `chmod +x run_compose.sh`
-    *   Run the script: `./run_compose.sh`
+        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~/Downloads/docker-compose` and press Enter.
+    *   Make the script executable:
+        *   Type `chmod +x run_compose.sh` and press Enter. This command gives the script permission to run.
+    *   Run the script:
+        *   Type `./run_compose.sh` and press Enter. This will start n8n using Docker Compose.
 
     **Windows**:
     *   Open PowerShell.
+        *   You can find PowerShell by searching for it in the Start menu.
     *   Navigate to the directory containing `run_compose_WIN.ps1`.
-    *   Run the script: `.\run_compose_WIN.ps1`
+        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~\Downloads\docker-compose` and press Enter.
+    *   Run the script:
+        *   Type `.\run_compose_WIN.ps1` and press Enter. This will start n8n using Docker Compose.
 4.  Open your browser and navigate to http://localhost:5678 to access n8n.
 
 
@@ -75,14 +83,22 @@ This method is provided for convenience, but Docker Compose is recommended for m
 
 1.  **macOS**:
     *   Open your terminal.
+        *   You can find the Terminal application in `/Applications/Utilities/Terminal.app`.
+        *   Alternatively, you can use Spotlight search (Command + Space) and type "terminal".
     *   Navigate to the directory containing `run_n8n_MAC.sh`.
-    *   Make the script executable: `chmod +x run_n8n_MAC.sh`
-    *   Run the script: `./run_n8n_MAC.sh`
+        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~/Downloads/n8n` and press Enter.
+    *   Make the script executable:
+        *   Type `chmod +x run_n8n_MAC.sh` and press Enter. This command gives the script permission to run.
+    *   Run the script:
+        *   Type `./run_n8n_MAC.sh` and press Enter. This will start n8n using Docker.
 
 2.  **Windows**:
     *   Open PowerShell.
+        *   You can find PowerShell by searching for it in the Start menu.
     *   Navigate to the directory containing `run_n8n_WINDOWS.ps1`.
-    *   Run the script: `.\run_n8n_WINDOWS.ps1`
+        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~\Downloads\n8n` and press Enter.
+    *   Run the script:
+        *   Type `.\run_n8n_WINDOWS.ps1` and press Enter. This will start n8n using Docker.
 
 3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
 
