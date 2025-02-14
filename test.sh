@@ -15,8 +15,6 @@ run_test() {
 # Function to cleanup after a script
 cleanup() {
   echo "Cleaning up..."
-  # Remove any created n8n_data directories
-  rm -rf ./n8n_data
   # Stop and remove any n8n containers
   docker stop n8n &> /dev/null || true
   docker rm n8n &> /dev/null || true
