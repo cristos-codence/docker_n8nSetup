@@ -7,6 +7,16 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 ![image](https://github.com/cristos-codence/docker_n8nSetup/assets/658f2811-c5fd-4cdb-af09-5d50f349fc10)
 
+## Installation
+
+1.  Download the latest release ZIP file:
+
+    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/latest/run_n8n_files.zip" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border-radius: 5px;">
+        Download n8n Setup Files
+    </a>
+
+2.  Unzip the downloaded file into a folder on your computer.
+
 ## Contents
 
 *   `run_n8n_MAC.sh`: A shell script for macOS to run n8n in Docker.
@@ -22,12 +32,6 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 *   Docker installed on your system.
     *   Install from: https://www.docker.com/products/docker-desktop/
     *   You do not need to sign up for an account (though a personal account is free). You can just download the installer if you scroll below the fold.
-
-### Installation
-
-1.  Go to the [Releases page](https://github.com/cristos-codence/docker_n8nSetup/releases) of this repository.
-2.  Download the latest release ZIP file.
-3.  Unzip the downloaded file into a folder on your computer.
 
 ### Running n8n
 
