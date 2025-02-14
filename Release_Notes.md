@@ -26,12 +26,12 @@ This release includes updates to the setup scripts for n8n, the workflow automat
     - Added volume mapping to persist data in `./n8n_data`
     - Added network configuration for traefik.
     - Added command to start n8n with tunnel.
-- **src/run_compose.sh:**
+- **src/run_compose_MAC.sh:**
     - Enhanced the script to detect Traefik and use `docker-compose.override.yml` to remove port mapping if Traefik is detected.
     - Added network creation for traefik if it doesn't exist.
 - **src/run_n8n_MAC.sh:**
     - Modified the script to use a local directory (`./n8n_data`) for persistence.
-- **src/run_n8n_WINDOWS.ps1:**
+- **src/run_n8n_WIN.ps1:**
     - Modified the script to use a local directory (`./n8n_data`) for persistence.
 - **test.sh:**
     - Added a new script to run all the `run_` scripts and check if they succeed.

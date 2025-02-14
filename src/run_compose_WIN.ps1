@@ -1,19 +1,22 @@
-# Create the n8n-data directory if it doesn't exist
-if (!(Test-Path -Path "./n8n_data" -PathType Container)) {
-    Write-Host "n8n_data directory does not exist. Creating it..."
-    New-Item -ItemType Directory -Path "./n8n_data"
+# Check if the traefik_net network exists
+if (docker network inspect traefik_net -ErrorAction SilentlyContinue) {
+    Write-Host "traefik_net network exists."
+} else {
+    Write-Host "traefik_net network does not exist. Creating it..."
+    docker network create traefik_net
+    if (!$?) {
+        Write-Error "Failed to create traefik_net network."
+        exit
+    }
 }
 
-# Run n8n using the n8n-data directory for persistence
-Write-Host "Pulling the latest n8nio/n8n image..."
-docker pull n8nio/n8n:latest
-
-Write-Host "Starting n8n..."
-docker run -it --rm `
-    --name n8n `
-    -p 5678:5678 `
-    -v "$(pwd)/n8n_data:/home/node/.n8n" \
-    -e NODEJS_PREFER_IPV4=true `
-    # -e DEBUG=* `
-    n8nio/n8n `
-    start --tunnel
+# Check if a Traefik container exists
+if (docker ps -q --filter "name=traefik" | Where-Object { $_ }) {
+    Write-Host "Traefik container detected. Using docker-compose.override.yml to remove port mapping."
+    docker compose pull
+    docker compose -p n8n --file docker-compose.yml --file docker-compose.override.yml up -d
+} else {
+    Write-Host "No Traefik container detected. Using docker-compose.yml."
+    docker compose pull
+    docker compose -p n8n up -d
+}
