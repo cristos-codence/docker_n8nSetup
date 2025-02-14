@@ -24,7 +24,7 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 ### Installation
 
 1.  Go to the [Releases page](https://github.com/cristos-codence/docker_n8nSetup/releases) of this repository.
-2.  Download the latest release ZIP file (e.g., `docker_n8nSetup-v1.0.0.zip`).
+2.  Download the latest release ZIP file.
 3.  Unzip the downloaded file into a folder on your computer.
 
 ### Running n8n
