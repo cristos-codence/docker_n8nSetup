@@ -16,7 +16,7 @@ Write-Host "Pulling the latest n8nio/n8n image..."
 docker pull n8nio/n8n:latest
 
 Write-Host "Starting n8n..."
-docker run -d --name n8n -p 5678:80 -v "$N8N_DATA_DIR:/home/node/.n8n" -e NODEJS_PREFER_IPV4=true n8nio/n8n start --tunnel
+docker run -d --name n8n -p 5678:80 -v "${N8N_DATA_DIR}:/home/node/.n8n" -e NODEJS_PREFER_IPV4=true n8nio/n8n start --tunnel
 
 Start-Sleep -Seconds 5
 docker logs n8n --tail 20
