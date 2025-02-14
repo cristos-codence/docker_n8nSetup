@@ -1,23 +1,23 @@
 services:
   n8n:
+    container_name: n8n
     image: n8nio/n8n:latest
     restart: unless-stopped
-    ports:
-      - "5678:5678"
+    # ports:
+    #   - "5678:5678"
     environment:
       - NODE_ENV=production
       - NODEJS_PREFER_IPV4=true
       - N8N_SECURE_COOKIE=false
+      - N8N_PROTOCOL=http
+      - N8N_PORT=80
       - N8N_HOST=n8n-docker-n8nfilemaker.docker.localhost
     volumes:
       - ./n8n_data:/home/node/.n8n
     networks:
       - traefik_net
+    command: "start --tunnel"
 
 networks:
   traefik_net:
     external: true
-
-
-volumes:
-  n8n_data: 
