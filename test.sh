@@ -25,6 +25,8 @@ run_test() {
   if [ $? -ne 0 ]; then
     echo "$script_name: FAILED (Write test failed)"
     return 1
+  else
+    echo "$script_name: Write test PASSED"
   fi
 
   # Test if the container can read from its internal volume
@@ -32,6 +34,8 @@ run_test() {
     if [ $? -ne 0 ]; then
     echo "$script_name: FAILED (Read test failed)"
     return 1
+  else
+    echo "$script_name: Read test PASSED"
   fi
 
   echo "$script_name: PASSED"
