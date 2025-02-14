@@ -5,7 +5,7 @@ run_test() {
   script_name="$1"
   echo "Running $script_name..."
   
-  if bash "$script_name"; then
+  if eval "$script_name"; then
     echo "$script_name: PASSED"
   else
     echo "$script_name: FAILED"
@@ -21,14 +21,17 @@ cleanup() {
   echo "Cleanup complete."
 }
 
+# Change to the directory where the scripts are located
+cd ./src || exit 1
+
 # Run the scripts
-run_test "./src/run_n8n_MAC.sh"
+run_test "./run_n8n_MAC.sh"
 cleanup
-run_test "./src/run_compose_MAC.sh"
+run_test "./run_compose_MAC.sh"
 cleanup
-run_test "pwsh ./src/run_n8n_WIN.ps1" 
+run_test "pwsh ./run_n8n_WIN.ps1"
 cleanup
-run_test "pwsh ./src/run_compose_WIN.ps1"
+run_test "pwsh ./run_compose_WIN.ps1"
 
 # Check exit status
 if [ $? -eq 0 ]; then
