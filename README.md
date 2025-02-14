@@ -7,11 +7,34 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 ![image](https://github.com/cristos-codence/docker_n8nSetup/assets/658f2811-c5fd-4cdb-af09-5d50f349fc10)
 
-## Contents
+## Installation
 
-*   `run_n8n_MAC.sh`: A shell script for macOS to run n8n in Docker.
-*   `run_n8n_WINDOWS.ps1`: A PowerShell script for Windows to run n8n in Docker.
-*   `run_compose.sh`: A shell script to run n8n using Docker Compose.
+1.  Install Docker Desktop:
+
+    <a href="https://www.docker.com/products/docker-desktop/" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
+        Download Docker Desktop
+    </a><br/>
+
+2.  Download the latest release ZIP file:
+
+    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/latest/docker-compose.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
+        Download Docker Compose Files for n8n
+    </a>
+
+3.  Unzip the downloaded file into a folder on your computer.
+
+4.  Run the setup script for your operating system.
+
+2.  Open your browser to `http://localhost:5678` to access n8n.
+
+    <a href="http://localhost:5678" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border-radius: 5px;">
+        Open locally-hosted n8n
+    </a>
+
+## Contents of docker-compose.zip
+
+*   `run_compose_MAC.sh`: A shell script for macOS to run n8n using Docker Compose.
+*   `run_compose_WIN.ps1`: A PowerShell script for Windows to run n8n using Docker Compose.
 *   `docker-compose.yml`: A Docker Compose file for running n8n.
 *   `docker-compose.override.yml`: A Docker Compose file that overrides the port mapping when Traefik is used.
 
@@ -22,12 +45,6 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 *   Docker installed on your system.
     *   Install from: https://www.docker.com/products/docker-desktop/
     *   You do not need to sign up for an account (though a personal account is free). You can just download the installer if you scroll below the fold.
-
-### Installation
-
-1.  Go to the [Releases page](https://github.com/cristos-codence/docker_n8nSetup/releases) of this repository.
-2.  Download the latest release ZIP file.
-3.  Unzip the downloaded file into a folder on your computer.
 
 ### Running n8n
 
@@ -43,7 +60,14 @@ This method is the preferred way to run n8n, as it provides a more robust and co
     *   Make the script executable: `chmod +x run_compose.sh`
     *   Run the script: `./run_compose.sh`
 
-    **Note:** If you are using Traefik, the `run_compose.sh` script will automatically detect it and remove the port mapping from the n8n service.
+    **Windows**:
+    *   Open PowerShell.
+    *   Navigate to the directory containing `run_compose_WIN.ps1`.
+    *   Run the script: `.\run_compose_WIN.ps1`
+4.  Open your browser and navigate to http://localhost:5678 to access n8n.
+
+
+**Note:** If you are using Traefik, the `docker-compose.override.yml` file will automatically detect it and remove the port mapping from the n8n service.
 
 #### Option 2: Using Shell/PowerShell Scripts
 
@@ -59,6 +83,8 @@ This method is provided for convenience, but Docker Compose is recommended for m
     *   Open PowerShell.
     *   Navigate to the directory containing `run_n8n_WINDOWS.ps1`.
     *   Run the script: `.\run_n8n_WINDOWS.ps1`
+
+3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
 
 ## Notes
 
