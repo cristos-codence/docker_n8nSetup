@@ -14,7 +14,9 @@ run_test() {
 
 # Run the scripts
 run_test "./src/run_n8n_MAC.sh"
-run_test "./src/run_compose_MAC.sh"
+run_test "./src/run_compose_MAC.sh" 
+
+run_test "pwsh ./src/run_n8n_WIN.ps1"
 run_test "pwsh ./src/run_compose_WIN.ps1"
 
 # Check exit status
