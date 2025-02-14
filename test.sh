@@ -8,7 +8,7 @@ run_test() {
   echo "Running $script_name..."
   echo "$output"
   
-  # Check for error messages in the output
+  # Check for error messages in the output #fixme
   if [[ $output == *"error"* ]] || [[ $output == *"Error"* ]]; then
     echo "$script_name: FAILED"
     return 1

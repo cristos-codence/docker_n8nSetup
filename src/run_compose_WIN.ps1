@@ -1,5 +1,5 @@
 # Check if the traefik_net network exists
-if (docker network inspect traefik_net -ErrorAction SilentlyContinue) {
+if (docker network inspect traefik_net) {
     Write-Host "traefik_net network exists."
 } else {
     Write-Host "traefik_net network does not exist. Creating it..."
