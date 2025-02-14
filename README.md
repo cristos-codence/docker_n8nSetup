@@ -17,13 +17,19 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 2.  Download the latest release ZIP file:
 
-    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/latest/docker-compose.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border-radius: 5px;">
+    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/latest/docker-compose.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
         Download Docker Compose Files for n8n
     </a>
 
 3.  Unzip the downloaded file into a folder on your computer.
 
 4.  Run the setup script for your operating system.
+
+2.  Open your browser to `http://localhost:5678` to access n8n.
+
+    <a href="http://localhost:5678" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border-radius: 5px;">
+        Open locally-hosted n8n
+    </a>
 
 ## Contents of docker-compose.zip
 
@@ -58,8 +64,10 @@ This method is the preferred way to run n8n, as it provides a more robust and co
     *   Open PowerShell.
     *   Navigate to the directory containing `run_compose_WIN.ps1`.
     *   Run the script: `.\run_compose_WIN.ps1`
+4.  Open your browser and navigate to http://localhost:5678 to access n8n.
 
-    **Note:** If you are using Traefik, the `docker-compose.override.yml` file will automatically detect it and remove the port mapping from the n8n service.
+
+**Note:** If you are using Traefik, the `docker-compose.override.yml` file will automatically detect it and remove the port mapping from the n8n service.
 
 #### Option 2: Using Shell/PowerShell Scripts
 
@@ -75,6 +83,8 @@ This method is provided for convenience, but Docker Compose is recommended for m
     *   Open PowerShell.
     *   Navigate to the directory containing `run_n8n_WINDOWS.ps1`.
     *   Run the script: `.\run_n8n_WINDOWS.ps1`
+
+3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
 
 ## Notes
 
