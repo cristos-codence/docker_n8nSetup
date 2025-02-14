@@ -25,14 +25,10 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 4.  Run the setup script for your operating system.
 
-## Contents
+## Contents of docker-compose.zip
 
-### run_n8n_files.zip
-*   `run_n8n_MAC.sh`: A shell script for macOS to run n8n in Docker.
-*   `run_n8n_WINDOWS.ps1`: A PowerShell script for Windows to run n8n in Docker.
-
-### docker-compose.zip
-*   `run_compose.sh`: A shell script to run n8n using Docker Compose.
+*   `run_compose_MAC.sh`: A shell script for macOS to run n8n using Docker Compose.
+*   `run_compose_WIN.ps1`: A PowerShell script for Windows to run n8n using Docker Compose.
 *   `docker-compose.yml`: A Docker Compose file for running n8n.
 *   `docker-compose.override.yml`: A Docker Compose file that overrides the port mapping when Traefik is used.
 
