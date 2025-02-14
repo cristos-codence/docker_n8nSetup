@@ -1,46 +1,37 @@
-# Release Notes - mvp-0.2.1
+# Release Notes - mvp-0.3.0
 
 ## Summary
 
-This release includes updates to the setup scripts for n8n, the workflow automation tool, using Docker. The primary changes involve prioritizing Docker Compose for running n8n, improving the persistence method, and enhancing Traefik integration.
+This release includes further enhancements to the setup scripts for n8n using Docker. The main changes involve updates to the Docker Compose configuration for better Traefik integration and improvements to the run scripts for both macOS and Windows.
 
 ## Key Changes
 
-- **Prioritized Docker Compose:** The recommended method for running n8n is now Docker Compose, offering a more robust and configurable deployment.
-- **Persistence Method:** Updated the scripts to use a local directory (`./n8n-data`) for data persistence instead of a Docker volume.
-- **Traefik Integration:** Improved Traefik integration by automatically detecting Traefik and removing port mapping from the n8n service when Traefik is used.
+- **Docker Compose Configuration:** Updated the Docker Compose configuration to set the `N8N_HOST` environment variable in the override file and changed the port mapping to use port 80 in the main compose file.
+- **Persistence Method:** Modified the scripts to use the user's Documents directory for data persistence (`$HOME/Documents/n8n_docker_files`).
+- **Run Scripts:** Improved the run scripts for both macOS and Windows to handle the updated persistence method and provide better feedback during the setup process.
+- **Testing:** Added a new test script to run all the setup scripts and perform cleanup steps between each test, improving error checking and reporting.
 
 ## Detailed Changes
 
-- **README.md:**
-    - Updated the installation and running instructions to prioritize Docker Compose.
-    - Modified the persistence information to reflect the use of a local directory (`./n8n-data`).
-    - Clarified that the n8n instance is accessible via Traefik when Traefik is configured.
-- **build.sh:**
-    - Added `docker-compose.override.yml` to the `docker-compose.zip` archive.
-    - Removed existing zip files before creating new ones.
 - **src/docker-compose.override.yml:**
-    - Added a new file to override the port mapping when Traefik is used.
+    - Added the `N8N_HOST` environment variable to set the hostname for n8n when using Traefik.
 - **src/docker-compose.yml:**
-    - Added explicit port mapping for port 5678.
-    - Added volume mapping to persist data in `./n8n_data`
-    - Added network configuration for traefik.
-    - Added command to start n8n with tunnel.
-- **src/run_compose_MAC.sh and src/run_compose_WIN.ps1:**
-    - Enhanced the script to detect Traefik and use `docker-compose.override.yml` to remove port mapping if Traefik is detected.
-    - Added network creation for traefik if it doesn't exist.
+    - Changed the port mapping to use port 80 instead of 5678.
+    - Updated the volume mapping to use the user's Documents directory for persistence (`$HOME/Documents/n8n_docker_files`).
 - **src/run_n8n_MAC.sh:**
-    - Modified the script to use a local directory (`./n8n_data`) for persistence.
-    - Added a 5-second pause and a `docker logs` tail check of 20 lines for feedback.
+    - Removed the script contents.
 - **src/run_n8n_WIN.ps1:**
-    - Modified the script to use a local directory (`./n8n_data`) for persistence.
-    - Added a 5-second pause and a `docker logs` tail check of 20 lines for feedback.
+    - Updated the script to use the user's Documents directory for persistence (`$HOME/Documents/n8n_docker_files`).
+    - Simplified the Docker run command.
+- **push.sh:**
+    - Added a new script to automate the process of committing changes, merging branches, and pushing to the remote repository.
 - **test.sh:**
-    - Added a new script to run all the `run_` scripts and check if they succeed.
+    - Added a new script to run all the setup scripts and check if they succeed.
     - Added cleanup steps between each test.
     - Improved error checking and reporting.
 
 ## Notes
 
 - Ensure Docker is installed and configured on your system.
-- When using Traefik, the n8n instance will be accessible through your Traefik configuration.
+- The n8n instance will be accessible through your Traefik configuration when Traefik is set up.
+- The data persistence directory has been changed to `$HOME/Documents/n8n_docker_files` for better organization and compatibility.
