@@ -13,6 +13,7 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 *   `run_n8n_WINDOWS.ps1`: A PowerShell script for Windows to run n8n in Docker.
 *   `run_compose.sh`: A shell script to run n8n using Docker Compose.
 *   `docker-compose.yml`: A Docker Compose file for running n8n.
+*   `docker-compose.override.yml`: A Docker Compose file that overrides the port mapping when Traefik is used.
 
 ## Usage
 
@@ -53,8 +54,10 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
     *   Make the script executable: `chmod +x run_compose.sh`
     *   Run the script: `./run_compose.sh`
 
+    **Note:** If you are using Traefik, the `run_compose.sh` script will automatically detect it and remove the port mapping from the n8n service.
+
 ## Notes
 
 *   The scripts assume that Docker is already installed and configured on your system.
 *   The scripts use a persistent volume named `n8n_data` to store n8n data.
-*   The n8n instance will be accessible at `http://localhost:5678`.
+*   The n8n instance will be accessible at `http://localhost:5678` *unless* you are using Traefik, in which case it will be accessible through your Traefik configuration.

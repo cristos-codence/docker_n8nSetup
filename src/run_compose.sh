@@ -12,5 +12,13 @@ else
   fi
 fi
 
-docker compose pull
-docker compose -p n8n up -d
+# Check if a Traefik container exists
+if docker ps -q --filter "name=traefik" | grep -q .; then
+  echo "Traefik container detected. Using docker-compose.override.yml to remove port mapping."
+  docker compose pull
+  docker compose -p n8n --file docker-compose.yml --file docker-compose.override.yml up -d
+else
+  echo "No Traefik container detected. Using docker-compose.yml."
+  docker compose pull
+  docker compose -p n8n up -d
+fi
