@@ -9,13 +9,19 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 ## Installation
 
-1.  Download the latest release ZIP file:
+1.  Install Docker Desktop:
 
-    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/latest/run_n8n_files.zip" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border-radius: 5px;">
+    <a href="https://www.docker.com/products/docker-desktop/" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
+        Download Docker Desktop
+    </a>
+
+2.  Download the latest release ZIP file:
+
+    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/latest/docker-compose.zip" style="display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border-radius: 5px;">
         Download n8n Setup Files
     </a>
 
-2.  Unzip the downloaded file into a folder on your computer.
+3.  Unzip the downloaded file into a folder on your computer.
 
 ## Contents
 
@@ -47,7 +53,12 @@ This method is the preferred way to run n8n, as it provides a more robust and co
     *   Make the script executable: `chmod +x run_compose.sh`
     *   Run the script: `./run_compose.sh`
 
-    **Note:** If you are using Traefik, the `run_compose.sh` script will automatically detect it and remove the port mapping from the n8n service.
+    **Windows**:
+    *   Open PowerShell.
+    *   Navigate to the directory containing `run_compose_WIN.ps1`.
+    *   Run the script: `.\run_compose_WIN.ps1`
+
+    **Note:** If you are using Traefik, the `docker-compose.override.yml` file will automatically detect it and remove the port mapping from the n8n service.
 
 #### Option 2: Using Shell/PowerShell Scripts
 
