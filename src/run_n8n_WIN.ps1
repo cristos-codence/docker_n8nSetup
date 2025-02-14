@@ -14,6 +14,5 @@ docker run -it --rm `
     -p 5678:5678 `
     -v "$(pwd)/n8n_/home/node/.n8n" `
     -e NODEJS_PREFER_IPV4=true `
-    # -e DEBUG=* `
     n8nio/n8n `
     start --tunnel
