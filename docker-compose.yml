@@ -7,8 +7,17 @@ services:
     environment:
       - NODE_ENV=production
       - NODEJS_PREFER_IPV4=true
+      - N8N_SECURE_COOKIE=false
+      - N8N_HOST=n8n-docker-n8nfilemaker.docker.localhost
     volumes:
-      - n8n_data:/home/node/.n8n
+      - ./n8n_data:/home/node/.n8n
+    networks:
+      - traefik_net
+
+networks:
+  traefik_net:
+    external: true
+
 
 volumes:
   n8n_data: 

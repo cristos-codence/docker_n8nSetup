@@ -1,2 +1,4 @@
 .aider*
 *.zip
+*.sqlite
+n8n_data
