@@ -3,12 +3,17 @@
 # Function to run a script and check for success
 run_test() {
   script_name="$1"
+  # Capture the output of the script
+  output=$($script_name 2>&1)
   echo "Running $script_name..."
+  echo "$output"
   
-  if eval "$script_name"; then
-    echo "$script_name: PASSED"
-  else
+  # Check for error messages in the output
+  if [[ $output == *"error"* ]] || [[ $output == *"Error"* ]]; then
     echo "$script_name: FAILED"
+    return 1
+  else
+    echo "$script_name: PASSED"
     return 1  # Indicate failure
   fi
 }
