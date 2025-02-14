@@ -11,7 +11,7 @@ docker pull n8nio/n8n:latest #fixme
 docker run -d \
   --name n8n \
   -p 5678:5678 \
-  -v "$(pwd)/n8n_/home/node/.n8n" \
+  -v "$(pwd)/n8n_data:/home/node/.n8n" \
   -e NODEJS_PREFER_IPV4=true \
   n8nio/n8n \
   start --tunnel
