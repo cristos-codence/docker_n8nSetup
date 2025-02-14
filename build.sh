@@ -1,4 +1,8 @@
 #!/bin/bash
 
+# Delete existing zip files
+rm -f ./dist/run_n8n_files.zip
+rm -f ./dist/docker-compose.zip
+
 zip ./dist/run_n8n_files.zip ./src/run_n8n_MAC.sh ./src/run_n8n_WINDOWS.ps1
 zip ./dist/docker-compose.zip ./src/docker-compose.yml ./src/docker-compose.override.yml ./src/run_compose.sh
