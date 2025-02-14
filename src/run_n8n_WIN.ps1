@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 # Get the user's documents directory
 $DOCUMENTS_DIR = [Environment]::GetFolderPath("MyDocuments")
 
