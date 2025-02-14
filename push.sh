@@ -1,6 +1,6 @@
 git checkout aider-cristos
 git add .
-aider --commit
+aider --commit --no-restore-chat-history
 git checkout development
 git merge aider-cristos
 git push
