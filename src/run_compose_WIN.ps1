@@ -1,3 +1,10 @@
+# Stop and remove existing n8n container if it exists
+if (docker ps -q --filter "name=n8n" | Where-Object { $_ }) {
+    Write-Host "Stopping and removing existing n8n container..."
+    docker stop n8n
+    docker rm n8n
+}
+
 # Check if the traefik_net network exists
 if (docker network inspect traefik_net) {
     Write-Host "traefik_net network exists."
