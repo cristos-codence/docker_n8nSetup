@@ -2,13 +2,6 @@
 
 cd $(dirname "$0") || exit 1 # Change directory to the script's directory
 
-# Stop and remove existing n8n container if it exists
-if docker ps -q --filter "name=n8n" | grep -q .; then
-  echo "Stopping and removing existing n8n container..."
-  docker stop n8n
-  docker rm n8n
-fi
-
 # Check if the traefik_net network exists
 if docker network inspect traefik_net > /dev/null 2>&1; then
   echo "traefik_net network exists."
