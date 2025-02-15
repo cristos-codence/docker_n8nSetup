@@ -16,6 +16,11 @@ services:
     networks:
       - traefik_net
     command: "start --tunnel"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.n8n.rule=Host(`n8n.docker.localhost`)"
+      - "traefik.http.routers.n8n.entrypoints=web"
+      - "traefik.http.services.n8n.loadbalancer.server.port=5678"
 
 networks:
   traefik_net:
