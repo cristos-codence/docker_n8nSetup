@@ -17,7 +17,7 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 2.  Download the latest release ZIP file:
 
-    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/mvp-0.3.1/docker-compose.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
+    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/mvp-0.3.2/docker-compose.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
         Download Docker Compose Files for n8n
     </a>
 
@@ -99,6 +99,8 @@ This method is provided for convenience, but Docker Compose is recommended for m
         *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~\Downloads\n8n` and press Enter.
     *   Run the script:
         *   Type `.\run_n8n_WINDOWS.ps1` and press Enter. This will start n8n using Docker.
+
+3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
 
 3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
 

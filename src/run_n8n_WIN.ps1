@@ -11,6 +11,13 @@ if (!(Test-Path -Path $N8N_DATA_DIR -PathType Container)) {
     New-Item -ItemType Directory -Path $N8N_DATA_DIR
 }
 
+# Stop and remove existing n8n container if it exists
+if (docker ps -q --filter "name=n8n" | Where-Object { $_ }) {
+    Write-Host "Stopping and removing existing n8n container..."
+    docker stop n8n
+    docker rm n8n
+}
+
 # Run n8n using the n8n-data directory for persistence
 Write-Host "Pulling the latest n8nio/n8n image..."
 docker pull n8nio/n8n:latest
