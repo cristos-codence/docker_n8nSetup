@@ -1,6 +1,7 @@
 services:
   n8n:
     container_name: n8n
+    hostname: n8n
     image: n8nio/n8n:latest
     restart: unless-stopped
     ports:
