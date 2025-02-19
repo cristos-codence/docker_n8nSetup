@@ -5,6 +5,8 @@ services:
     environment:
       - N8N_HOST=n8n.docker.localhost
       - N8N_PORT=80
+    networks:
+      - traefik_net
 
 networks:
   traefik_net:

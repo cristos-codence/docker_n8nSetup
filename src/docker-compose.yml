@@ -11,6 +11,4 @@ services:
       - N8N_PROTOCOL=http
     volumes:
       - $HOME/Documents/n8n_docker_files:/home/node/.n8n
-    networks:
-      - traefik_net
     command: "start --tunnel"
