@@ -1,5 +1,5 @@
 # Determine the parent directory of the Documents directory
-$HOME = [System.IO.Path]::GetDirectoryName([Environment]::GetFolderPath("MyDocuments"))
+$HOME = [System.IO.Path]::GetDirectoryName((Get-Item ([Environment]::GetFolderPath("MyDocuments"))).Parent.FullName)
 
 # Stop and remove existing n8n container if it exists
 if (docker ps -q --filter "name=n8n" | Where-Object { $_ }) {
