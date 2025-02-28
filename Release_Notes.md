@@ -1,38 +1,42 @@
-# Release Notes - mvp-0.3.4
+# Release Notes - mvp-0.3.5
 
 ## Summary
 
-This release focuses on improving the installation experience and fixing issues with Traefik integration. The documentation has been reorganized for better clarity, and several technical improvements have been made to the Docker configuration and scripts.
+This release builds upon the improvements introduced in mvp-0.3.4, focusing on further enhancing the Docker configuration and addressing additional Traefik integration issues. The documentation has been updated to reflect these changes, and several optimizations have been made to improve the overall stability and performance of the n8n Docker setup.
 
 ## Key Changes
 
-- **Installation Experience:** 
-    - Moved installation instructions to the top of README.md
-    - Added direct download buttons for Docker Desktop and docker-compose.zip
-    - Improved clarity of setup instructions for both Windows and macOS
+- **Docker Configuration Refinements:** 
+    - Updated n8n Docker image to latest stable version
+    - Fine-tuned environment variables for better performance
+    - Improved container networking configuration
 
-- **Docker Compose Configuration:**
-    - Renamed docker-compose.override.yml to docker-compose.traefik.yml for clearer purpose
-    - Updated Traefik network configuration for better integration
-    - Modified port mappings and environment variables for improved compatibility
+- **Traefik Integration Enhancements:**
+    - Resolved remaining connectivity issues with Traefik
+    - Improved hostname resolution and routing
+    - Enhanced proxy configuration for better reliability
 
-- **Run Scripts Improvements:**
-    - Added checks for existing containers to prevent conflicts
-    - Improved HOME directory detection for Windows environments
-    - Updated scripts to use the new docker-compose.traefik.yml filename
-    - Added proper PowerShell execution policy bypass commands
+- **Script Improvements:**
+    - Further optimized container cleanup procedures
+    - Enhanced error handling and reporting
+    - Improved cross-platform compatibility
+
+- **Documentation Updates:**
+    - Added more detailed troubleshooting steps
+    - Updated installation instructions for clarity
+    - Included additional configuration examples
 
 ## Technical Details
 
 - **Docker Configuration Changes:**
-    - Modified port mapping configuration for better Traefik compatibility
-    - Updated environment variables for proper hostname resolution
-    - Improved network configuration for Traefik integration
+    - Optimized port mapping configuration
+    - Updated environment variables for improved stability
+    - Enhanced network configuration for better integration
 
 - **Script Enhancements:**
-    - Added container cleanup before starting new instances
-    - Improved error handling and user feedback
-    - Better path handling for Windows environments
+    - Improved container management logic
+    - Better error handling for edge cases
+    - Enhanced path handling across different environments
 
 ## Notes
 
