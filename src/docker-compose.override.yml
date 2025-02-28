@@ -1,6 +1,0 @@
-services:
-  n8n:
-    ports: []
-    environment:
-      - N8N_HOST=n8n-n8n.docker.localhost
-      - N8N_PORT=80

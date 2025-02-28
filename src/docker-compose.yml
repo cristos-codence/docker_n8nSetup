@@ -1,21 +1,48 @@
 services:
   n8n:
     container_name: n8n
-    image: n8nio/n8n:latest
+    hostname: n8n
+    image: n8nio/n8n:stable
     restart: unless-stopped
-    ports:
-      - "5678:5678"
     environment:
+      # USER CONFIGURATION - change these to your own, if needed
+      - GENERIC_TIMEZONE=America/New_York
+
+      # Configure Logging
+      - N8N_LOG_OUTPUT=console,file
+      - N8N_LOG_FILE_COUNT_MAX=10
+      - N8N_LOG_FILE_LOCATION=/home/node/.n8n/logs/n8n.log
+      - N8N_LOG_LEVEL=info
+      - CODE_ENABLE_STDOUT=true
+
+      # Scaffolding for new users
+      - N8N_TEMPLATES_ENABLED=true
+      - N8N_HIRING_BANNER_ENABLED=false
+
+      # Concurrency and performance management
+      - N8N_CONCURRENCY_PRODUCTION_LIMIT=2
+
+      # Executions and database cleanup
+      - EXECUTIONS_DATA_PRUNE=true
+      - EXECUTIONS_DATA_PRUNE_MAX_COUNT=100
+      - EXECUTIONS_DATA_SAVE_ON_PROGRESS=true # Set to false to have fewer executions saved to the database
+      - DB_TYPE=sqlite
+      - DB_SQLITE_VACUUM_ON_STARTUP=false
+      - DB_SQLITE_POOL_SIZE=2
+
+      # Fixes for warnings
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+
+      # Deployment - only change if you know what you're doing
+        # Node settings
       - NODE_ENV=production
+        # Network access (can impact tunneling)
       - NODEJS_PREFER_IPV4=true
       - N8N_SECURE_COOKIE=false
       - N8N_PROTOCOL=http
+      - N8N_HOST=localhost
+
     volumes:
       - $HOME/Documents/n8n_docker_files:/home/node/.n8n
-    networks:
-      - traefik_net
     command: "start --tunnel"
-
-networks:
-  traefik_net:
-    external: true

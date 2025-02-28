@@ -2,13 +2,6 @@
 
 cd $(dirname "$0") || exit 1 # Change directory to the script's directory
 
-# Stop and remove existing n8n container if it exists
-if docker ps -q --filter "name=n8n" | grep -q .; then
-  echo "Stopping and removing existing n8n container..."
-  docker stop n8n
-  docker rm n8n
-fi
-
 # Check if the traefik_net network exists
 if docker network inspect traefik_net > /dev/null 2>&1; then
   echo "traefik_net network exists."
@@ -23,12 +16,14 @@ fi
 
 # Check if a Traefik container exists
 if docker ps -q --filter "name=traefik" | grep -q .; then
-  echo "Traefik container detected. Using docker-compose.override.yml to remove port mapping."
+  echo "Traefik container detected. Using docker-compose.traefik.yml to remove port mapping."
   docker compose pull
-  docker compose -p n8n --file docker-compose.yml --file docker-compose.override.yml up -d
+  docker compose -p n8n --file docker-compose.yml --file docker-compose.traefik.yml down
+  docker compose -p n8n --file docker-compose.yml --file docker-compose.traefik.yml up -d
 else
   echo "No Traefik container detected. Using docker-compose.yml."
   docker compose pull
+  docker compose -p n8n down
   docker compose -p n8n up -d
 fi
 

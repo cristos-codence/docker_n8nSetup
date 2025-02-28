@@ -71,7 +71,7 @@ This method is the preferred way to run n8n, as it provides a more robust and co
     *   Navigate to the directory containing `run_compose_WIN.ps1`.
         *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~\Downloads\docker-compose` and press Enter.
     *   Run the script:
-        *   Type `.\run_compose_WIN.ps1` and press Enter. This will start n8n using Docker Compose.
+        *   Type `powershell.exe -executionpolicy bypass .\run_compose_WIN.ps1` and press Enter. This will start n8n using Docker Compose.
 4.  Open your browser and navigate to http://localhost:5678 to access n8n.
 
 
@@ -98,7 +98,9 @@ This method is provided for convenience, but Docker Compose is recommended for m
     *   Navigate to the directory containing `run_n8n_WINDOWS.ps1`.
         *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~\Downloads\n8n` and press Enter.
     *   Run the script:
-        *   Type `.\run_n8n_WINDOWS.ps1` and press Enter. This will start n8n using Docker.
+        *   Type `powershell.exe -executionpolicy bypass .\run_n8n_WINDOWS.ps1` and press Enter. This will start n8n using Docker.
+
+3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
 
 3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
 
