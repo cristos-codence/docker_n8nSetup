@@ -20,15 +20,15 @@ services:
       - N8N_HIRING_BANNER_ENABLED=false
 
       # Concurrency and performance management
-      - N8N_CONCURRENCY_PRODUCTION_LIMIT=2
+      - N8N_CONCURRENCY_PRODUCTION_LIMIT=1
 
       # Executions and database cleanup
       - EXECUTIONS_DATA_PRUNE=true
       - EXECUTIONS_DATA_PRUNE_MAX_COUNT=100
-      - EXECUTIONS_DATA_SAVE_ON_PROGRESS=true # Set to false to have fewer executions saved to the database
+      - EXECUTIONS_DATA_SAVE_ON_PROGRESS=false # Set to false to have fewer executions saved to the database
       - DB_TYPE=sqlite
       - DB_SQLITE_VACUUM_ON_STARTUP=false
-      - DB_SQLITE_POOL_SIZE=2
+      - DB_SQLITE_POOL_SIZE=1
 
       # Fixes for warnings
       - N8N_RUNNERS_ENABLED=true

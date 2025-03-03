@@ -52,3 +52,15 @@ If upgrading from a previous version:
 2. Download the latest release
 3. Replace all existing files with the new versions
 4. Run the appropriate script for your operating system
+- The n8n instance will be accessible at `http://localhost:5678` by default
+- When using Traefik, the instance will be accessible through your Traefik configuration
+- Windows users should use `powershell.exe -executionpolicy bypass` to run the scripts
+- Data persistence continues to use `$HOME/Documents/n8n_docker_files`
+
+## Upgrade Notes
+
+If upgrading from a previous version:
+1. Stop any running n8n containers
+2. Download the latest release
+3. Replace all existing files with the new versions
+4. Run the appropriate script for your operating system
