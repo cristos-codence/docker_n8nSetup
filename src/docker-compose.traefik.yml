@@ -4,6 +4,7 @@ services:
       - 5678
     environment:
       - N8N_HOST=n8n-n8n.docker.localhost
+      - N8N_EDITOR_BASE_URL=http://n8n-n8n.docker.localhost
       - N8N_PROXY_HOPS=1
     networks:
       - traefik_net

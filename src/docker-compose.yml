@@ -45,4 +45,5 @@ services:
 
     volumes:
       - $HOME/Documents/n8n_docker_files:/home/node/.n8n
+      - $HOME/Downloads:/data/downloads
     command: "start --tunnel"

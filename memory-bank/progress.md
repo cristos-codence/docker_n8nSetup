@@ -24,14 +24,14 @@
 ## What's Left to Build
 
 ### Enhanced Features
+- 🔄 Disk usage monitoring and cleanup
+- 🔄 Service cluster: ngrok docker container w/ net shared with n8n for tunneling
+- 🔄 Service cluster: traefik setup if not already present
 - 🔄 Support for additional reverse proxy solutions beyond Traefik
-- 🔄 More customization options for advanced users
 - 🔄 Backup and restore automation
 
 ### Documentation Improvements
-- 🔄 Advanced configuration examples
 - 🔄 Troubleshooting guide
-- 🔄 Performance tuning recommendations
 
 ### Quality Enhancements
 - 🔄 Comprehensive automated testing

@@ -3,3 +3,4 @@
 *.sqlite
 n8n_data
 diff.txt
+docker-compose.override.yml
