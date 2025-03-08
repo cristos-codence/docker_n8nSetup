@@ -25,7 +25,7 @@
 
 ### Enhanced Features
 - 🔄 Disk usage monitoring and cleanup
-- 🔄 Service cluster: ngrok docker container w/ net shared with n8n for tunneling
+- ✅ Service cluster: ngrok docker container w/ net shared with n8n for tunneling (In Progress)
 - 🔄 Service cluster: traefik setup if not already present
 - 🔄 Support for additional reverse proxy solutions beyond Traefik
 - 🔄 Backup and restore automation

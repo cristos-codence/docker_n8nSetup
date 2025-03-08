@@ -1,7 +1,18 @@
 #!/bin/bash
 
-DOCUMENTS_DIR="$HOME/Documents"
+# NOTE: This script is deprecated.
+# Please use run_compose_MAC.sh instead, which includes ngrok tunneling.
+# This script is kept for backward compatibility only.
 
+echo "⚠️  This script is deprecated. Please use run_compose_MAC.sh instead, which includes ngrok tunneling."
+echo "Continue with this script anyway? (y/n)"
+read -r answer
+if [[ "$answer" != "y" ]]; then
+  echo "Exiting. Please use run_compose_MAC.sh for improved functionality."
+  exit 0
+fi
+
+DOCUMENTS_DIR="$HOME/Documents"
 N8N_DATA_DIR="$DOCUMENTS_DIR/n8n_docker_files"
 
 if [ ! -d "$N8N_DATA_DIR" ]; then
@@ -18,6 +29,7 @@ fi
 
 docker pull n8nio/n8n:latest
 
+echo "Starting n8n container..."
 docker run -d \
   --name n8n \
   -p 5678:5678 \
@@ -26,5 +38,10 @@ docker run -d \
   n8nio/n8n \
   start --tunnel
 
-sleep 5
-docker logs n8n --tail 20
+sleep 3
+echo "n8n container logs:"
+docker logs n8n --tail 10
+
+echo ""
+echo "⚠️  NOTE: This script does not include ngrok tunneling."
+echo "    To access n8n from outside your network, please use run_compose_MAC.sh instead."

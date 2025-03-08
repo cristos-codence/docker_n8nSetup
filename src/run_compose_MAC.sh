@@ -2,29 +2,42 @@
 
 cd $(dirname "$0") || exit 1 # Change directory to the script's directory
 
-# Check if the traefik_net network exists
-if docker network inspect traefik_net > /dev/null 2>&1; then
-  echo "traefik_net network exists."
+# Check for .env file
+if [ -f .env ]; then
+  echo "Loading environment variables from .env file."
 else
-  echo "traefik_net network does not exist. Creating it..."
-  docker network create traefik_net
-  if [ $? -ne 0 ]; then
-    echo "Failed to create traefik_net network."
-    exit 1
+  echo "No .env file found. Creating from example..."
+  if [ -f .env.example ]; then
+    cp .env.example .env
+    echo "Created .env file from .env.example. Please edit it to add your ngrok authtoken."
+    echo "   Get your authtoken from https://dashboard.ngrok.com/get-started/your-authtoken"
+  else
+    echo "WARNING: No .env.example file found. ngrok service may not work correctly."
+    touch .env
   fi
 fi
 
-# Check if a Traefik container exists
-if docker ps -q --filter "name=traefik" | grep -q .; then
-  echo "Traefik container detected. Using docker-compose.traefik.yml to remove port mapping."
-  docker compose pull
-  docker compose -p n8n --file docker-compose.yml --file docker-compose.traefik.yml down
-  docker compose -p n8n --file docker-compose.yml --file docker-compose.traefik.yml up -d
+# Check if ngrok authtoken is set
+NGROK_TOKEN=$(grep NGROK_AUTHTOKEN .env | cut -d '=' -f2)
+if [[ -z "$NGROK_TOKEN" ]] || [[ "$NGROK_TOKEN" = "your_ngrok_authtoken_here" ]]; then
+  echo "⚠️  NGROK_AUTHTOKEN not properly set in .env file. The ngrok service will not work correctly."
+  echo "   Get your authtoken from https://dashboard.ngrok.com/get-started/your-authtoken"
+  echo "   and add it to the .env file."
+  exit 1
 else
-  echo "No Traefik container detected. Using docker-compose.yml."
-  docker compose pull
-  docker compose -p n8n down
-  docker compose -p n8n up -d
+  echo "✅ NGROK_AUTHTOKEN is set. ngrok service will be available."
 fi
 
-docker logs n8n --tail 20
+# Start containers
+echo "Starting n8n with ngrok..."
+docker compose pull
+docker compose -p n8n down
+docker compose -p n8n up -d
+
+# Show logs
+echo "n8n container logs:"
+docker logs n8n --tail 10
+
+echo ""
+echo "ngrok container logs:"
+docker logs n8n-ngrok --tail 5
