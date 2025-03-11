@@ -2,7 +2,7 @@
 
 ## Summary
 
-This release enhances the ngrok integration introduced in 0.4.0, adding support for custom subdomains and improved configuration. The n8n instance is now automatically configured to use the ngrok domain for webhooks and UI access, providing a seamless experience when accessing your workflows from the internet. This release marks the v1.0.1 release.
+This release enhances the ngrok integration introduced in 0.4.0, adding support for custom subdomains and improved configuration. The n8n instance is now automatically configured to use the ngrok domain for webhooks and UI access, providing a seamless experience when accessing your workflows from the internet. This release also includes a bug fix to ensure correct webhook redirection when using ngrok. This release marks the v1.0.1 release.
 
 ## Key Changes
 
@@ -11,6 +11,9 @@ This release enhances the ngrok integration introduced in 0.4.0, adding support 
     - Configured n8n environment variables to use ngrok domain for webhooks and UI
     - Implemented shared network between n8n and ngrok containers
     - Created custom startup parameters for ngrok container
+
+- **Bug Fix:**
+    - Corrected port configuration to use port 80 instead of 5678 for proper webhook redirection when accessed via ngrok.
 
 - **Script Improvements:**
     - Added validation for NGROK_DOMAIN environment variable
@@ -40,6 +43,7 @@ This release enhances the ngrok integration introduced in 0.4.0, adding support 
       - N8N_PROTOCOL: Set to https
       - N8N_EDITOR_BASE_URL: Full ngrok URL
       - N8N_WEBHOOK_URL: Full ngrok URL
+    - Modified port mapping in `docker-compose.yml` to use port 80 internally.
 
 - **Script Enhancements:**
     - Added validation for both NGROK_AUTHTOKEN and NGROK_DOMAIN variables
