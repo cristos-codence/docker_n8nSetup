@@ -29,6 +29,7 @@ From the Release Notes (mvp-0.3.5):
    - Updated installation instructions for clarity
    - Included additional configuration examples
    - Added ngrok setup documentation
+   - Created docs folder in memory-bank with deployment environment variables reference
 
 ## Active Decisions
 
@@ -63,6 +64,7 @@ Based on the current state of the project, potential next steps include:
    - Document common issues and their solutions
    - Provide examples of advanced configurations
    - Expand ngrok setup and troubleshooting documentation
+   - Add more environment variable references to the docs folder
 
 2. **Additional Integration Support**:
    - Explore additional ngrok configuration options (auth, IP restrictions)
