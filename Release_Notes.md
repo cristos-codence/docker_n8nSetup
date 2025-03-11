@@ -1,8 +1,8 @@
-# Release Notes - mvp-0.4.1
+# Release Notes - v1.0.0
 
 ## Summary
 
-This release enhances the ngrok integration introduced in 0.4.0, adding support for custom subdomains and improved configuration. The n8n instance is now automatically configured to use the ngrok domain for webhooks and UI access, providing a seamless experience when accessing your workflows from the internet.
+This release enhances the ngrok integration introduced in 0.4.0, adding support for custom subdomains and improved configuration. The n8n instance is now automatically configured to use the ngrok domain for webhooks and UI access, providing a seamless experience when accessing your workflows from the internet. This release marks the v1.0.0 release.
 
 ## Key Changes
 
