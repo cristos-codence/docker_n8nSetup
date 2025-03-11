@@ -21,6 +21,7 @@
 - ✅ Basic installation instructions
 - ✅ Usage documentation for standard deployments
 - ✅ Release notes for version tracking
+- ✅ Deployment environment variables reference in memory-bank docs
 
 ## What's Left to Build
 
@@ -33,6 +34,7 @@
 
 ### Documentation Improvements
 - 🔄 Troubleshooting guide
+- 🔄 Additional environment variable categories (database, queue, workflow, etc.)
 
 ### Quality Enhancements
 - 🔄 Comprehensive automated testing

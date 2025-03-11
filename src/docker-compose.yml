@@ -42,9 +42,11 @@ services:
         # Network access (can impact tunneling)
       - NODEJS_PREFER_IPV4=true
       - N8N_SECURE_COOKIE=false
-      - N8N_PROTOCOL=https
+      - N8N_PROTOCOL=http
       # Configure for ngrok
       - N8N_HOST=${NGROK_DOMAIN}
+      # Tell n8n to use standard HTTP port and that it's behind a proxy
+      - N8N_PORT=80
       - N8N_EDITOR_BASE_URL=https://${NGROK_DOMAIN}
       - N8N_WEBHOOK_URL=https://${NGROK_DOMAIN}
 
@@ -52,7 +54,7 @@ services:
       - $HOME/Documents/n8n_docker_files:/home/node/.n8n
       - $HOME/Downloads:/data/downloads
     ports:
-      - "5678:5678"
+      - "5678:80"
     networks:
       - n8n-network
     command: "start"
@@ -63,7 +65,7 @@ services:
     restart: unless-stopped
     environment:
       - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
-    command: "http n8n:5678 --domain=${NGROK_DOMAIN}"
+    command: "http n8n:80 --domain=${NGROK_DOMAIN}"
     depends_on:
       - n8n
     networks:
