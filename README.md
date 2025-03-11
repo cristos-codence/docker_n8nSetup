@@ -17,7 +17,7 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 2.  Download the latest release ZIP file:
 
-    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/mvp-0.3.4/docker-compose.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
+    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/v1.0.0/n8n_setup_scripts.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
         Download Docker Compose Files for n8n
     </a>
 
@@ -31,12 +31,13 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
         Open locally-hosted n8n
     </a>
 
-## Contents of docker-compose.zip
+## Contents of n8n_setup_scripts.zip
 
 *   `run_compose_MAC.sh`: A shell script for macOS to run n8n using Docker Compose.
 *   `run_compose_WIN.ps1`: A PowerShell script for Windows to run n8n using Docker Compose.
 *   `docker-compose.yml`: A Docker Compose file for running n8n.
-*   `docker-compose.override.yml`: A Docker Compose file that overrides the port mapping when Traefik is used.
+*   `README_NGROK.md`: Instructions for using ngrok with n8n.
+*   `.env.example`: Example environment variables.
 
 ## Usage
 
@@ -52,62 +53,34 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 This method is the preferred way to run n8n, as it provides a more robust and configurable deployment.
 
-1.  Download the `docker-compose.zip` file from the [Releases page](https://github.com/cristos-codence/docker_n8nSetup/releases).
-2.  Unzip the `docker-compose.zip` file into a folder on your computer.
+1.  Download the `n8n_setup_scripts.zip` file from the [Releases page](https://github.com/cristos-codence/docker_n8nSetup/releases).
+2.  Unzip the `n8n_setup_scripts.zip` file into a folder on your computer.
 3.  **macOS**:
     *   Open your terminal.
         *   You can find the Terminal application in `/Applications/Utilities/Terminal.app`.
         *   Alternatively, you can use Spotlight search (Command + Space) and type "terminal".
-    *   Navigate to the directory containing `run_compose.sh`.
-        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~/Downloads/docker-compose` and press Enter.
+    *   Navigate to the directory containing `run_compose_MAC.sh`.
+        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~/Downloads/n8n_setup_scripts` and press Enter.
     *   Make the script executable:
-        *   Type `chmod +x run_compose.sh` and press Enter. This command gives the script permission to run.
+        *   Type `chmod +x run_compose_MAC.sh` and press Enter. This command gives the script permission to run.
     *   Run the script:
-        *   Type `./run_compose.sh` and press Enter. This will start n8n using Docker Compose.
+        *   Type `./run_compose_MAC.sh` and press Enter. This will start n8n using Docker Compose.
 
     **Windows**:
     *   Open PowerShell.
         *   You can find PowerShell by searching for it in the Start menu.
     *   Navigate to the directory containing `run_compose_WIN.ps1`.
-        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~\Downloads\docker-compose` and press Enter.
+        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~\Downloads\n8n_setup_scripts` and press Enter.
     *   Run the script:
         *   Type `powershell.exe -executionpolicy bypass .\run_compose_WIN.ps1` and press Enter. This will start n8n using Docker Compose.
 4.  Open your browser and navigate to http://localhost:5678 to access n8n.
 
-
-**Note:** If you are using Traefik, the `docker-compose.override.yml` file will automatically detect it and remove the port mapping from the n8n service.
-
 #### Option 2: Using Shell/PowerShell Scripts
 
-This method is provided for convenience, but Docker Compose is recommended for most users.
-
-1.  **macOS**:
-    *   Open your terminal.
-        *   You can find the Terminal application in `/Applications/Utilities/Terminal.app`.
-        *   Alternatively, you can use Spotlight search (Command + Space) and type "terminal".
-    *   Navigate to the directory containing `run_n8n_MAC.sh`.
-        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~/Downloads/n8n` and press Enter.
-    *   Make the script executable:
-        *   Type `chmod +x run_n8n_MAC.sh` and press Enter. This command gives the script permission to run.
-    *   Run the script:
-        *   Type `./run_n8n_MAC.sh` and press Enter. This will start n8n using Docker.
-
-2.  **Windows**:
-    *   Open PowerShell.
-        *   You can find PowerShell by searching for it in the Start menu.
-    *   Navigate to the directory containing `run_n8n_WINDOWS.ps1`.
-        *   Use the `cd` command followed by the path to the directory. For example, if the files are in your Downloads folder, type `cd ~\Downloads\n8n` and press Enter.
-    *   Run the script:
-        *   Type `powershell.exe -executionpolicy bypass .\run_n8n_WINDOWS.ps1` and press Enter. This will start n8n using Docker.
-
-3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
-
-3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
-
-3.  Open your browser and navigate to `http://localhost:5678 to access n8n.
+This method is deprecated and no longer supported. Please use Docker Compose.
 
 ## Notes
 
 *   The scripts assume that Docker is already installed and configured on your system.
-*   The scripts use a local directory `./n8n-data` to store n8n data.
-*   The n8n instance will be accessible at `http://localhost:5678` *unless* you are using Traefik, in which case it will be accessible through your Traefik configuration.
+*   The scripts use a local directory `$HOME/Documents/n8n_docker_files` to store n8n data.
+*   The n8n instance will be accessible at `http://localhost:5678` *unless* you are using Traefik, in which case it will be accessible through your Traefik configuration, or you are using ngrok, in which case it will be accessible through your ngrok domain.
