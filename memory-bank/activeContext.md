@@ -1,7 +1,7 @@
 # Active Context: n8n Setup Scripts
 
 ## Current Work Focus
-The project is currently focused on maintaining and improving the Docker setup scripts for n8n, with particular attention to Traefik integration and cross-platform compatibility. Based on the latest release notes (mvp-0.3.5), the team has been refining the Docker configuration and addressing integration issues.
+The project is currently focused on maintaining and improving the Docker setup scripts for n8n. Recent work has included configuring ngrok tunneling as an alternative to Traefik integration. Based on the latest release notes (mvp-0.3.5), the team has been refining the Docker configuration and addressing integration issues.
 
 ## Recent Changes
 From the Release Notes (mvp-0.3.5):
@@ -10,21 +10,25 @@ From the Release Notes (mvp-0.3.5):
    - Updated n8n Docker image to latest stable version
    - Fine-tuned environment variables for better performance
    - Improved container networking configuration
+   - Added ngrok integration for secure tunneling
 
-2. **Traefik Integration Enhancements**:
-   - Resolved connectivity issues with Traefik
-   - Improved hostname resolution and routing
-   - Enhanced proxy configuration for better reliability
+2. **Tunneling Integration**:
+   - Implemented ngrok container integration for secure tunneling
+   - Added environment variables for ngrok configuration
+   - Set up proper networking between n8n and ngrok
+   - Configured n8n to use ngrok domain for webhooks and UI access
 
 3. **Script Improvements**:
    - Optimized container cleanup procedures
    - Enhanced error handling and reporting
    - Improved cross-platform compatibility
+   - Added validation for ngrok configuration
 
 4. **Documentation Updates**:
    - Added more detailed troubleshooting steps
    - Updated installation instructions for clarity
    - Included additional configuration examples
+   - Added ngrok setup documentation
 
 ## Active Decisions
 
@@ -42,17 +46,26 @@ From the Release Notes (mvp-0.3.5):
    - Setting appropriate logging levels and rotation policies
    - Configuring n8n for production-ready deployment
 
+## Current Focus
+
+The project has implemented ngrok integration as an alternative to Traefik for external tunneling. This provides:
+- Simpler public access to n8n instances
+- Reduced need for complex Traefik configuration
+- Secure external access without port forwarding
+- Custom domain support via ngrok's free tier
+
 ## Next Steps
 
-Based on the current state of the project, potential next steps could include:
+Based on the current state of the project, potential next steps include:
 
 1. **Enhanced Documentation**:
    - Create more detailed usage guides for different scenarios
    - Document common issues and their solutions
    - Provide examples of advanced configurations
+   - Expand ngrok setup and troubleshooting documentation
 
 2. **Additional Integration Support**:
-   - Consider adding support for other reverse proxies
+   - Explore additional ngrok configuration options (auth, IP restrictions)
    - Explore integration with monitoring tools
    - Investigate backup/restore automation
 
@@ -64,4 +77,4 @@ Based on the current state of the project, potential next steps could include:
 4. **Security Enhancements**:
    - Review and improve security-related configurations
    - Document security best practices for production deployments
-   - Consider adding optional SSL/TLS support for non-Traefik deployments
+   - Implement additional ngrok security features like IP restrictions
