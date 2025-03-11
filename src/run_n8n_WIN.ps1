@@ -1,4 +1,17 @@
 #!/usr/bin/env pwsh
+
+# NOTE: This script is deprecated.
+# Please use run_compose_WIN.ps1 instead, which includes ngrok tunneling.
+# This script is kept for backward compatibility only.
+
+Write-Host "⚠️  This script is deprecated. Please use run_compose_WIN.ps1 instead, which includes ngrok tunneling." -ForegroundColor Yellow
+Write-Host "Continue with this script anyway? (y/n)"
+$answer = Read-Host
+if ($answer -ne "y") {
+    Write-Host "Exiting. Please use run_compose_WIN.ps1 for improved functionality."
+    exit 0
+}
+
 # Get the user's documents directory
 $DOCUMENTS_DIR = [Environment]::GetFolderPath("MyDocuments")
 
@@ -25,5 +38,10 @@ docker pull n8nio/n8n:latest
 Write-Host "Starting n8n..."
 docker run -d --name n8n -p 5678:5678 -v "${N8N_DATA_DIR}:/home/node/.n8n" -e NODEJS_PREFER_IPV4=true n8nio/n8n start --tunnel
 
-Start-Sleep -Seconds 5
-docker logs n8n --tail 20
+Start-Sleep -Seconds 3
+Write-Host "n8n container logs:" -ForegroundColor Cyan
+docker logs n8n --tail 10
+
+Write-Host ""
+Write-Host "⚠️  NOTE: This script does not include ngrok tunneling." -ForegroundColor Yellow
+Write-Host "    To access n8n from outside your network, please use run_compose_WIN.ps1 instead."
