@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   n8n:
     container_name: n8n
@@ -20,15 +22,15 @@ services:
       - N8N_HIRING_BANNER_ENABLED=false
 
       # Concurrency and performance management
-      - N8N_CONCURRENCY_PRODUCTION_LIMIT=2
+      - N8N_CONCURRENCY_PRODUCTION_LIMIT=1
 
       # Executions and database cleanup
       - EXECUTIONS_DATA_PRUNE=true
       - EXECUTIONS_DATA_PRUNE_MAX_COUNT=100
-      - EXECUTIONS_DATA_SAVE_ON_PROGRESS=true # Set to false to have fewer executions saved to the database
+      - EXECUTIONS_DATA_SAVE_ON_PROGRESS=false # Set to false to have fewer executions saved to the database
       - DB_TYPE=sqlite
       - DB_SQLITE_VACUUM_ON_STARTUP=false
-      - DB_SQLITE_POOL_SIZE=2
+      - DB_SQLITE_POOL_SIZE=1
 
       # Fixes for warnings
       - N8N_RUNNERS_ENABLED=true
@@ -40,9 +42,33 @@ services:
         # Network access (can impact tunneling)
       - NODEJS_PREFER_IPV4=true
       - N8N_SECURE_COOKIE=false
-      - N8N_PROTOCOL=http
-      - N8N_HOST=localhost
+      - N8N_PROTOCOL=https
+      # Configure for ngrok
+      - N8N_HOST=${NGROK_DOMAIN}
+      - N8N_EDITOR_BASE_URL=https://${NGROK_DOMAIN}
+      - N8N_WEBHOOK_URL=https://${NGROK_DOMAIN}
 
     volumes:
       - $HOME/Documents/n8n_docker_files:/home/node/.n8n
-    command: "start --tunnel"
+      - $HOME/Downloads:/data/downloads
+    ports:
+      - "5678:5678"
+    networks:
+      - n8n-network
+    command: "start"
+
+  ngrok:
+    container_name: n8n-ngrok
+    image: ngrok/ngrok:latest
+    restart: unless-stopped
+    environment:
+      - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
+    command: "http n8n:5678 --domain=${NGROK_DOMAIN}"
+    depends_on:
+      - n8n
+    networks:
+      - n8n-network
+
+networks:
+  n8n-network:
+    driver: bridge

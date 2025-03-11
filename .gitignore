@@ -1,5 +1,7 @@
+.env
 .aider*
 *.zip
 *.sqlite
 n8n_data
 diff.txt
+docker-compose.override.yml

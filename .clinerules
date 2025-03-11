@@ -1,0 +1,67 @@
+# n8n Setup Scripts Project Rules and Guidelines
+
+## Project Patterns
+
+### Directory Structure
+- Configuration files are stored in `src/`
+- Scripts follow naming pattern: `run_[type]_[OS].[extension]`
+- OS-specific scripts use appropriate extensions (.sh for macOS, .ps1 for Windows)
+
+### Scripting Standards
+- Bash scripts should include shebang line and directory change for consistency
+- Error handling should check command success and provide user feedback
+- Network detection should happen before container operations
+- Container management should follow: pull -> down -> up pattern
+
+### Configuration Management
+- Docker Compose is the preferred deployment method
+- All configurations should support Traefik integration
+- Environment variables follow n8n's recommended configuration
+- Volume mapping uses consistent home directory location
+
+## User Preferences
+
+### Documentation Style
+- Use clear, step-by-step instructions with numbered lists
+- Include command examples and expected output
+- Provide troubleshooting sections for common issues
+- Use visual elements (links, buttons, etc.) where helpful
+
+### Version Management
+- Follow semantic versioning with mvp-x.y.z format
+- Document all changes in Release_Notes.md
+- Group changes by category (Docker, Traefik, Scripts, Documentation)
+
+## Implementation Notes
+
+### Critical Paths
+- The run_compose scripts are the primary entry point for users
+- Traefik detection is essential for proper network configuration
+- Docker volume mapping ensures data persistence
+- Container logs are displayed after startup for immediate feedback
+
+### Known Challenges
+- Port conflicts when 5678 is already in use
+- PowerShell execution policy restrictions on Windows
+- File permission issues for the persistence directory
+- Docker Desktop must be running before scripts execute
+
+### Tool Usage Patterns
+- Use `docker compose pull` before operations to ensure latest image
+- Use `docker compose -p n8n` to set a consistent project name
+- Use `docker logs` for viewing container output
+- Use conditional logic to detect and adapt to environment
+
+## Project-Specific Knowledge
+
+### n8n Container Configuration
+- The `command: "start --tunnel"` enables tunneling capability
+- Environment variables control logging, database behavior, and runtime settings
+- Volumes are mapped to ensure persistence across container restarts
+- Container restart policy is set to "unless-stopped" for reliability
+
+### Traefik Integration
+- Integration leverages the traefik_net network
+- Scripts detect Traefik and use appropriate compose file
+- When Traefik is detected, port mapping is removed for proper routing
+- Network creation is automatic if traefik_net doesn't exist
