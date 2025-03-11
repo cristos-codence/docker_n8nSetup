@@ -15,17 +15,28 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
         Download Docker Desktop
     </a><br/>
 
-2.  Download the latest release ZIP file:
+2.  Sign up for a free ngrok account:
+
+    <a href="https://ngrok.com/" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #1F1E37; color: white; border-radius: 5px;">
+        Create ngrok Account
+    </a><br/>
+    
+    - Get your authtoken from the [ngrok dashboard](https://dashboard.ngrok.com/get-started/your-authtoken)
+    - Set up your free static domain at [dashboard.ngrok.com/cloud-edge/domains](https://dashboard.ngrok.com/cloud-edge/domains)
+
+3.  Download the latest release ZIP file:
 
     <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/v1.0.1/n8n_setup_scripts.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
         Download Docker Compose Files for n8n
     </a>
 
-3.  Unzip the downloaded file into a folder on your computer.
+4.  Unzip the downloaded file into a folder on your computer.
 
-4.  Run the setup script for your operating system.
+5.  Configure your ngrok credentials in the `.env` file (created automatically by the setup script if it doesn't exist).
 
-2.  Open your browser to `http://localhost:5678` to access n8n.
+6.  Run the setup script for your operating system.
+
+7.  Access n8n through your ngrok URL or locally at `http://localhost:5678`.
 
     <a href="http://localhost:5678" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #4CAF50; color: white; border-radius: 5px;">
         Open locally-hosted n8n
@@ -46,6 +57,11 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 *   Docker installed on your system.
     *   Install from: https://www.docker.com/products/docker-desktop/
     *   You do not need to sign up for an account (though a personal account is free). You can just download the installer if you scroll below the fold.
+
+*   ngrok account (required as of v1.0.0).
+    *   Sign up at: https://ngrok.com/ (free tier available)
+    *   You'll need an authentication token and a static domain
+    *   See the "Setting Up ngrok with n8n" section below for details
 
 ### Running n8n
 
@@ -78,6 +94,48 @@ This method is the preferred way to run n8n, as it provides a more robust and co
 #### Option 2: Using Shell/PowerShell Scripts
 
 This method is deprecated and no longer supported. Please use Docker Compose.
+
+## Setting Up ngrok with n8n
+
+ngrok creates secure tunnels from public URLs to your locally running services, making your n8n instance accessible from anywhere without complex network configuration.
+
+### Benefits of Using ngrok
+
+- **Public Access**: Access your n8n workflows from anywhere
+- **No Port Forwarding**: No need to configure your router
+- **Secure**: Encrypted connections
+- **Persistent URLs**: Use static domains that don't change between sessions
+
+### Setup Instructions
+
+1. **Get an ngrok Authentication Token and Static Domain**:
+   - Create an account at [ngrok.com](https://ngrok.com) (free tier available)
+   - Go to [the ngrok dashboard](https://dashboard.ngrok.com/get-started/your-authtoken) to get your authtoken
+   - Navigate to [dashboard.ngrok.com/cloud-edge/domains](https://dashboard.ngrok.com/cloud-edge/domains) to set up your free static domain
+   - Make note of your full domain name (e.g., `myapp.ngrok-free.app`)
+
+2. **Configure Your Environment**:
+   - Navigate to the `src` directory
+   - The startup script will create an `.env` file for you if it doesn't exist
+   - Edit the `.env` file and add your ngrok credentials:
+     ```
+     NGROK_AUTHTOKEN=your_actual_token_here
+     NGROK_DOMAIN=your-domain.ngrok-free.app
+     ```
+
+3. **Start n8n with ngrok**:
+   - Run the appropriate script for your platform (same as normal startup)
+   - The script will now start both n8n and ngrok containers
+
+4. **Access Your n8n Instance**:
+   - Your n8n instance will be accessible at your ngrok URL: `https://your-domain.ngrok-free.app`
+   - This URL is accessible from anywhere with internet access
+
+### Troubleshooting
+
+- **ngrok Not Working**: Check the ngrok logs with `docker logs n8n-ngrok`. Ensure your authtoken is correctly set in the `.env` file.
+- **Can't Connect to URL**: Ensure your n8n container is running correctly with `docker logs n8n`.
+- **Webhook Issues**: The docker-compose.yml automatically configures n8n to use your ngrok domain for webhooks.
 
 ## Notes
 
