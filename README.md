@@ -17,7 +17,7 @@ This repository contains scripts to quickly set up and run n8n, the workflow aut
 
 2.  Download the latest release ZIP file:
 
-    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/v1.0.0/n8n_setup_scripts.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
+    <a href="https://github.com/cristos-codence/docker_n8nSetup/releases/download/v1.0.1/n8n_setup_scripts.zip" style="display: inline-block; padding: 10px 20px; margin-bottom: 10px; font-size: 16px; font-weight: bold; text-align: center; text-decoration: none; background-color: #007BFF; color: white; border-radius: 5px;">
         Download Docker Compose Files for n8n
     </a>
 
