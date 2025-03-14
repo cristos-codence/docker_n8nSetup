@@ -22,12 +22,12 @@ services:
       - N8N_HIRING_BANNER_ENABLED=false
 
       # Concurrency and performance management
-      - N8N_CONCURRENCY_PRODUCTION_LIMIT=1
+      - N8N_CONCURRENCY_PRODUCTION_LIMIT=2
 
       # Executions and database cleanup
       - EXECUTIONS_DATA_PRUNE=true
-      - EXECUTIONS_DATA_PRUNE_MAX_COUNT=100
-      - EXECUTIONS_DATA_SAVE_ON_PROGRESS=false # Set to false to have fewer executions saved to the database
+      - EXECUTIONS_DATA_PRUNE_MAX_COUNT=5
+      - EXECUTIONS_DATA_SAVE_ON_PROGRESS=true # Set to false to have fewer executions saved to the database
       - DB_TYPE=sqlite
       - DB_SQLITE_VACUUM_ON_STARTUP=false
       - DB_SQLITE_POOL_SIZE=1
@@ -47,14 +47,13 @@ services:
       - N8N_HOST=${NGROK_DOMAIN}
       # Tell n8n to use standard HTTP port and that it's behind a proxy
       - N8N_PORT=80
+      - N8N_PROXY_HOPS=1
       - N8N_EDITOR_BASE_URL=https://${NGROK_DOMAIN}
       - N8N_WEBHOOK_URL=https://${NGROK_DOMAIN}
 
     volumes:
       - $HOME/Documents/n8n_docker_files:/home/node/.n8n
       - $HOME/Downloads:/data/downloads
-    ports:
-      - "5678:80"
     networks:
       - n8n-network
     command: "start"
