@@ -48,6 +48,10 @@ services:
       - N8N_PROXY_HOPS=1
       - N8N_EDITOR_BASE_URL=https://${NGROK_DOMAIN}
       - N8N_WEBHOOK_URL=https://${NGROK_DOMAIN}
+      - N8N_PROTOCOL_HEADER=X-Forwarded-Proto
+      - N8N_ENDPOINT_FORM=form
+      - N8N_ENDPOINT_WEBHOOK_WAIT=form-waiting
+      - WEBHOOK_URL=https://${NGROK_DOMAIN}
 
     volumes:
       - $HOME/Documents/n8n_docker_files:/home/node/.n8n
@@ -64,7 +68,7 @@ services:
     restart: unless-stopped
     environment:
       - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN}
-    command: "http n8n:80 --domain=${NGROK_DOMAIN}"
+    command: "http --domain=${NGROK_DOMAIN} --log=stdout --request-header-add='X-Forwarded-Proto: https' n8n:80"
     depends_on:
       - n8n
     networks:
